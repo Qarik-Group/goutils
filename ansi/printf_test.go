@@ -45,6 +45,7 @@ func TestColorizer(t *testing.T) {
 		{"host error: %s", "host error: %s", "host error: %s"},
 		{"@r{multiline\nstring}", "\033[00;31mmultiline\nstring\033[00m", "multiline\nstring"},
 		{"@*{R\nA\nI\nN\nB\nO\nW}", "\033[01;31mR\033[00m\n\033[01;33mA\033[00m\n\033[01;32mI\033[00m\n\033[01;36mN\033[00m\n\033[01;34mB\033[00m\n\033[01;35mO\033[00m\n\033[01;31mW\033[00m", "R\nA\nI\nN\nB\nO\nW"},
+		{"@*{R\nA I\tN\vB\fO   W}", "\033[01;31mR\033[00m\n\033[01;33mA\033[00m \033[01;32mI\033[00m\t\033[01;36mN\033[00m\v\033[01;34mB\033[00m\f\033[01;35mO\033[00m   \033[01;31mW\033[00m", "R\nA I\tN\vB\fO   W"},
 	}
 
 	for _, test := range tests {
